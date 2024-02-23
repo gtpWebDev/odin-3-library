@@ -20,33 +20,12 @@ body {
   font-family: var(--font-hierarchy);
 }
 
-h3 {
-  margin: 15px 0 15px 0;
-}
-
-
-h4 {
-  margin: 5px 0;
-}
-
-p {
-  margin: 0;
+h2 {
+  margin: 15px 0;
 }
 
 .icon {
   width: 30px;
-}
-
-.large-icon { 
-  width: 50px
-}
-
-.profile-pic {
-  width: 50px;
-}
-
-.large-profile-pic {
-  width: 70px;
 }
 
 #top-container {
@@ -87,7 +66,7 @@ p {
   grid-template-columns: repeat(0.7fr 0.3fr);
 }
 
-
+/*
 #dashboard-logo, #dashboard-navigation {
   display: grid;
   row-gap: 20px;
@@ -96,6 +75,7 @@ p {
 #dashboard-navigation {
   grid-template-rows: repeat(6, 1fr);
 }
+*/
 
 
 
@@ -127,6 +107,7 @@ p {
   fill: white;
 }
 
+/*
 #topbar-welcome {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -139,6 +120,7 @@ p {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
+*/
 
 #topbar-options {
   padding: 15px;
@@ -159,29 +141,18 @@ p {
 
 #main-content {
   background-color: var(--midLightColour);
-  grid-column: 2;
-  grid-row: 2;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 0.7fr 0.3fr;
   padding: 20px;
+}
+
+#library-book-container {
+  background-color: var(--midLightColour);
+  display: grid;
+  /* replace with autofill? */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
-#main-projects-container {
-  /* border: 2px solid; */
-  grid-row: 1 / 3;
-  grid-column: 1;
-}
-
-#projects-content-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 25px;
-}
-
-.indiv-project-container {
+.indiv-book-container {
   background-color: var(--backGroundColour);
   border-left: 8px solid orange;
   border-radius: 10px;
@@ -190,19 +161,28 @@ p {
   grid-template-rows: auto 150px auto;
 }
 
-.project-title {
+.book-title-and-author {
   font-weight: 800;
   font-size: 20px;
   align-self: center;
   margin-bottom: 5px;
 }
 
-.project-details {
+p.book-title, p.book-author {
+  font-size: 16px;
+  margin: 2px;
+}
+p.book-author {
+  font-style: italic;
+}
+
+.book-synopsis {
   font-size: 18px;
 }
 
-.project-icons {
+.book-options {
   display: grid;
-  grid-template-columns: repeat(3, 40px);
+  grid-template-columns: repeat(2, 40px);
+  gap: 20px;
   justify-content: end;
 }
