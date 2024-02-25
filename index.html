@@ -9,34 +9,20 @@
 </head>
 <body>
 
-
-  <!-- <dialog> -->
   <dialog id="add-book-dialog-no-display">
     <h2>Please provide the book details...</h2>
-    <form id="add-book-form" action="https://httpbin.org/post" method="post">
-      <div>
-        <label class="form-label" for="book-name">Book Title
+    <form id="add-book-form" action="" method="post">
+      <div id="form-inputs">
+        <label class="form-label" for="book-name">Book Title:</label>
         <input class="form-input" type="text" id="form-book-name" name="book-name" placeholder="Lord of the rings..." required>
-      </div>
-      <div>
-        <label class="form-label" for="book-author">Author
-        <input class="form-input" type="text" id="form-book-author" name="book-author" required>
-      </div>
-      <div>
-        <label class="form-label" for="book-pages">Number of pages
-        <input class="form-input" type="number" id="form-book-pages" name="book-pages" required>
-      </div>
-      <div>
-        <label class="form-label" for="book-read-or-not">Have you read this yet?
+        <label class="form-label" for="book-author">Author:</label>
+        <input class="form-input" type="text" id="form-book-author" name="book-author" placeholder="J R R Tolkein" required>
+        <label class="form-label" for="book-read-or-not">Read this yet?</label>
         <input class="form-input" type="checkbox" id="form-book-read-or-not" name="book-read-or-not">
-      </div>
-      <div>
-        <label class="form-label" for="book-synopsis">Synopsis
+        <label class="form-label" for="book-synopsis">Synopsis:</label>
         <input class="form-input" type="text" id="form-book-synopsis" name="book-synopsis">
-        <!-- <textarea class="form-input" id="form-book-pages" name="book-synopsis" cols="30" rows="5">Synopsis</textarea> -->
       </div>
-
-      <div id="add-book-form-buttons">
+      <div id="form-buttons">
         <button id="add-book-submit" class="form-button" type="submit">Submit</button>
         <button id="add-book-cancel" class="form-button" type="cancel" autofocus>Cancel</button>
       </div>
@@ -46,25 +32,18 @@
 
   <div id="top-container">
 
-    <div id="side-dashboard">
-      <div id="dashboard-logo">
-        <div class="dash-header-container">
-          <img class="dash-option-img large-icon" src="img/library.svg" alt="home">
-          <div class="dash-header-link">Odin Library</div>
-        </div>
-      </div>
-
-    </div>
-
     <div id="topbar">
-      <div id="topbar-options">
-        <button id="open-add-book-dialog" class="blue-button">Add Book</button>
+
+      <div id="topbar-title">
+        <img class="topbar-image" src="img/library.svg" alt="home">
+        <div class="topbar-name">Odin Library</div>
       </div>
+      <button id="open-add-book-dialog" class="blue-button">Add Book</button>
 
     </div>
 
     <div id="main-content">
-      <h2>Library Books</h2>
+      <h1>Library Books</h1>
       <div id="library-book-container">
         <!-- User to generate library books -->
       </div>
