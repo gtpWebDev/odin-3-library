@@ -21,6 +21,8 @@
 body {
   font-size: 16px;
   font-family: var(--font-hierarchy);
+  max-width: 1500px;
+  margin: auto;
 }
 
 h2 {

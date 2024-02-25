@@ -33,12 +33,7 @@ addBookToLibrary(
 )
 
 /*
-  1. Display books function to transform the data onto the UI.
-
-  2. New book function that opens a modal dialog to allow the user to add a new book.
-
   3. Remove book function.
-
   4. Toggle status to readOrNot = true.
 */
 
@@ -107,6 +102,7 @@ addBookSubmit.addEventListener("click", (event) => {
   addBookDialog.removeAttribute("id","add-book-dialog")
   addBookDialog.close();
   addBookButton.focus();
+  displayBooksWithMap()
 })
 
 
@@ -116,13 +112,21 @@ function addBookToLibrary(name, author, pages, synopsis, readOrNot) {
 }
 
 
+function removeBook(index) {
+  myLibrary.splice(index,1)
+}
 
-// Option 1 - most elegant using map, join and adding it using innerHTML
+function toggleReadOrNot(index) {
+  myLibrary[index].readOrNot = !myLibrary[index].readOrNot
+}
+
+
+//  Generate DOM for each book, and assocate remove book and toggle read functionality to buttons
 function displayBooksWithMap() {
 
   let libraryBookContainer = document.querySelector("#library-book-container")
 
-  let createdDOM = myLibrary.map((elem) => {
+  let createdDOM = myLibrary.map((elem, index) => {
 
     return `
       <div style="background-color: ${elem.readOrNot ? "#ccffcc" : "#ff9980"}" class="indiv-book-container">
@@ -132,21 +136,35 @@ function displayBooksWithMap() {
         </div>
         <p class="book-synopsis">${elem.synopsis}</p>
         <div class="book-options">
-          <img class="icon" src="${elem.readOrNot ? "/img/eye-minus.svg" : "/img/eye-plus.svg"}">
-          <img class="icon" src="img/library-remove.svg">
+          <img id="toggle-read-book-${index}" class="icon" src="${elem.readOrNot ? "/img/eye-minus.svg" : "/img/eye-plus.svg"}">
+          <img id="remove-book-${index}" class="icon" src="img/library-remove.svg">
         </div>
       </div>
     `
         
   }).join('')
 
-  // Note innerHTML generates a coplete rebuild of the parent - perfect here
+  // Note innerHTML generates a complete rebuild of the parent
   libraryBookContainer.innerHTML = createdDOM
+
+  // associate button functionality to the created DOM elements
+  myLibrary.forEach((elem, index) => {
+    let removeBookButton = document.querySelector(`#remove-book-${index}`)
+    removeBookButton.addEventListener("click",() => {
+      removeBook(index)
+      displayBooksWithMap()
+    })
+    let toggelReadOrNotButton = document.querySelector(`#toggle-read-book-${index}`)
+    toggelReadOrNotButton.addEventListener("click",() => {
+      toggleReadOrNot(index)
+      displayBooksWithMap()
+    })
+  })
 
 }
 
 
-// Option 2 for displaying books (keep in backgorund)
+// Option 2 for displaying books, not used
 
 //let loadWithDOM = document.querySelector("#load-with-dom")
 //loadWithDOM.addEventListener("click",displayBooksAmendDOM)
