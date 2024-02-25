@@ -1,8 +1,8 @@
 
+// live code on page load
 
 const myLibrary = [];
 
-// starter books to avoid an empty library...
 addBookToLibrary(
   "Life of Pi",
   "Yann Martel",
@@ -32,50 +32,19 @@ addBookToLibrary(
   true
 )
 
-/*
-  3. Remove book function.
-  4. Toggle status to readOrNot = true.
-*/
+displayBooksWithMap()
 
 
-// add webpage button functionality
-let loadWithMap = document.querySelector("#load-with-map")
-loadWithMap.addEventListener("click",displayBooksWithMap)
+// Add button functionality  - add button, then submit and cancel on the modal dialog
 
-
-
-// Book object constructor function
-function Book(name, author, pages, synopsis, readOrNot) {
-
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-  this.readOrNot = readOrNot
-  this.synopsis = synopsis
-  this.info = function() {
-    if (readOrNot) {
-      return `${name} by ${author}, ${pages} pages, previously read`
-    } else {
-      return `${name} by ${author}, ${pages} pages, not read yet`
-    }
-  }
-
-}
-
-
-
-// Add book functionality - event listeners to open up the dialog, submit and cancel
-
-/* Two important notes about modal:
-  1. preventDefault prevents the usual behaviour of posting the collected information to a server (here it is being added to an array only).
-  2. the modal usually has display: none. styling the modal implicitly makes it visible, so need to add the styling on showModal() and remove it on close()
-*/
 const addBookDialog = document.querySelector("dialog")
 let addBookButton = document.querySelector("#open-add-book-dialog")
 
 addBookButton.addEventListener("click", () => {
   
   addBookDialog.showModal()
+  // the modal usually has display: none, which ensures it is not shown.
+  // Applying the id applies a grid display which makes it visible, so this can only be done when showModal is applied
   addBookDialog.setAttribute("id","add-book-dialog")
 })
 
@@ -83,6 +52,7 @@ let addBookCancel = document.querySelector("#add-book-cancel")
 addBookCancel.addEventListener("click", (event) => {
   // prevent usual behaviour of form submit to send information to a server
   event.preventDefault();
+  // return the modal to display: none
   addBookDialog.setAttribute("id","add-book-dialog-no-display")
   addBookDialog.close();
   addBookButton.focus();
@@ -106,11 +76,29 @@ addBookSubmit.addEventListener("click", (event) => {
 })
 
 
+
+// Book object constructor function
+function Book(name, author, pages, synopsis, readOrNot) {
+
+  this.name = name;
+  this.author = author;
+  this.pages = pages;
+  this.readOrNot = readOrNot
+  this.synopsis = synopsis
+  this.info = function() {
+    if (readOrNot) {
+      return `${name} by ${author}, ${pages} pages, previously read`
+    } else {
+      return `${name} by ${author}, ${pages} pages, not read yet`
+    }
+  }
+
+}
+
 function addBookToLibrary(name, author, pages, synopsis, readOrNot) {
   let newBook = new Book(name, author, pages, synopsis, readOrNot)
   myLibrary.push(newBook)
 }
-
 
 function removeBook(index) {
   myLibrary.splice(index,1)
@@ -121,7 +109,7 @@ function toggleReadOrNot(index) {
 }
 
 
-//  Generate DOM for each book, and assocate remove book and toggle read functionality to buttons
+// Generate DOM for all books held in the library, and assocate remove book and toggle read functionality for each book
 function displayBooksWithMap() {
 
   let libraryBookContainer = document.querySelector("#library-book-container")
@@ -164,10 +152,12 @@ function displayBooksWithMap() {
 }
 
 
-// Option 2 for displaying books, not used
+// A second approach to displaying the library books, not used
 
-//let loadWithDOM = document.querySelector("#load-with-dom")
-//loadWithDOM.addEventListener("click",displayBooksAmendDOM)
+/*
+
+let loadWithDOM = document.querySelector("#load-with-dom")
+loadWithDOM.addEventListener("click",displayBooksAmendDOM)
 
 function displayBooksAmendDOM() {
 
@@ -219,4 +209,6 @@ function displayBooksAmendDOM() {
   })
 
 }
+
+*/
 
