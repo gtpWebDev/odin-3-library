@@ -8,7 +8,42 @@
   <script src="index.js" defer></script>
 </head>
 <body>
-  
+
+
+  <!-- <dialog> -->
+  <dialog id="add-book-dialog-no-display">
+    <h2>Please provide the book details...</h2>
+    <form id="add-book-form" action="https://httpbin.org/post" method="post">
+      <div>
+        <label class="form-label" for="book-name">Book Title
+        <input class="form-input" type="text" id="form-book-name" name="book-name" placeholder="Lord of the rings..." required>
+      </div>
+      <div>
+        <label class="form-label" for="book-author">Author
+        <input class="form-input" type="text" id="form-book-author" name="book-author" required>
+      </div>
+      <div>
+        <label class="form-label" for="book-pages">Number of pages
+        <input class="form-input" type="number" id="form-book-pages" name="book-pages" required>
+      </div>
+      <div>
+        <label class="form-label" for="book-read-or-not">Have you read this yet?
+        <input class="form-input" type="checkbox" id="form-book-read-or-not" name="book-read-or-not">
+      </div>
+      <div>
+        <label class="form-label" for="book-synopsis">Synopsis
+        <input class="form-input" type="text" id="form-book-synopsis" name="book-synopsis">
+        <!-- <textarea class="form-input" id="form-book-pages" name="book-synopsis" cols="30" rows="5">Synopsis</textarea> -->
+      </div>
+
+      <div id="add-book-form-buttons">
+        <button id="add-book-submit" class="form-button" type="submit">Submit</button>
+        <button id="add-book-cancel" class="form-button" type="cancel" autofocus>Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+
   <div id="top-container">
 
     <div id="side-dashboard">
@@ -34,52 +69,20 @@
     </div>
 
     <div id="topbar">
-    <!-- 
-      <div id="topbar-welcome">
-        <div id="topbar-welcome-profilepic">
-          <img class="large-profile-pic" src="img/profile-pic.png" alt="profile-pic">
-        </div>
-        <div id="topbar-welcome-text">
-          <p style="font-size: 18px; font-weight: 800;">Hi there,</p>
-          <p style="font-size: 24px; font-weight: 800;">Morgan Oakley (@morgan)</p>
-        </div>
-      </div>
-    -->
       <div id="topbar-options">
-        <button class="blue-button">Add Book</button>
+        <!-- <button id="load-with-dom" class="blue-button">Load Books Using DOM Manipulation</button> -->
+        <button id="load-with-map" class="blue-button">Display Library Books</button>
+        <button id="open-add-book-dialog" class="blue-button">Add Book</button>
       </div>
 
     </div>
 
     <div id="main-content">
-
       <h2>Library Books</h2>
-
-    
       <div id="library-book-container">
-
-        <!-- Template for DOM manipulation
-
-        <div style="background-color: #ccffcc" class="indiv-book-container">
-          <div class="book-title-and-author">
-            <p class="book-title">Book title</p>
-            <p class="book-author">by book author</p>
-          </div>
-          <p class="book-synopsis">Book synopsis</p>
-          <div class="book-options">
-            <img class="icon" src="img/eye-plus.svg">
-            <img class="icon" src="img/library-remove.svg">
-          </div>
-        </div>
-
-        -->
-
+        <!-- User to generate library books -->
       </div>
-    
-
-
     </div>
-
 
   </div>
 
