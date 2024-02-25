@@ -11,7 +11,8 @@
 
   <dialog id="add-book-dialog-no-display">
     <h2>Please provide the book details...</h2>
-    <form id="add-book-form" action="" method="post">
+    <!-- method dialog necessary when form located in a dialog -->
+    <form id="add-book-form" action="" method="dialog">
       <div id="form-inputs">
         <label class="form-label" for="book-name">Book Title:</label>
         <input class="form-input" type="text" id="form-book-name" name="book-name" placeholder="Lord of the rings..." required>

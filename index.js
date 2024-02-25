@@ -20,11 +20,13 @@ const addBookDialog = document.querySelector("dialog")
 let addBookButton = document.querySelector("#open-add-book-dialog")
 
 addBookButton.addEventListener("click", () => {
-  
   addBookDialog.showModal()
   // The css for this id removes display: none, so styling has to be applied after showModal
   addBookDialog.setAttribute("id","add-book-dialog")
 })
+
+
+
 
 let addBookCancel = document.querySelector("#add-book-cancel")
 addBookCancel.addEventListener("click", (event) => {
@@ -36,22 +38,22 @@ addBookCancel.addEventListener("click", (event) => {
   addBookButton.focus();
 })
 
-let addBookSubmit = document.querySelector("#add-book-submit")
-addBookSubmit.addEventListener("click", (event) => {
+let addBookForm = document.querySelector("#add-book-form")
+addBookForm.addEventListener("submit", (event) => {
   // prevent usual behaviour of form submit to send information to a server
   event.preventDefault();
   addBookToLibrary(
     document.querySelector("#form-book-name").value,
     document.querySelector("#form-book-author").value,
+    document.querySelector("#form-book-read-or-not").checked,
     document.querySelector("#form-book-synopsis").value,
-    document.querySelector("#form-book-read-or-not").value,
   )
+  resetForm()
   addBookDialog.removeAttribute("id","add-book-dialog")
   addBookDialog.close();
   addBookButton.focus();
   displayBooksWithMap()
 })
-
 
 
 // Book object constructor
@@ -62,6 +64,12 @@ function Book(name, author, readOrNot, synopsis) {
   this.synopsis = synopsis
 }
 
+function resetForm() {
+  document.querySelector("#form-book-name").value = "";
+  document.querySelector("#form-book-author").value = "";
+  document.querySelector("#form-book-synopsis").value = "";
+  document.querySelector("#form-book-read-or-not").checked = false;
+}
 
 function addBookToLibrary(name, author, readOrNot, synopsis) {
   myLibrary.push(new Book(name, author, readOrNot, synopsis))
