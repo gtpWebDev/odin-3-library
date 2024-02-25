@@ -93,7 +93,7 @@ function displayBooksWithMap() {
         </div>
         <p class="book-synopsis">${elem.synopsis}</p>
         <div class="book-options">
-          <img id="toggle-read-book-${index}" class="icon" src="${elem.readOrNot ? "/img/eye-minus.svg" : "/img/eye-plus.svg"}">
+          <img id="toggle-read-book-${index}" class="icon" src="${elem.readOrNot ? "img/eye-minus.svg" : "img/eye-plus.svg"}">
           <img id="remove-book-${index}" class="icon" src="img/library-remove.svg">
         </div>
       </div>
@@ -111,7 +111,7 @@ function displayBooksWithMap() {
       removeBook(index)
       displayBooksWithMap()
     })
-    
+
     let toggelReadOrNotButton = document.querySelector(`#toggle-read-book-${index}`)
     toggelReadOrNotButton.addEventListener("click",() => {
       toggleReadOrNot(index)
