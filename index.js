@@ -4,6 +4,20 @@
     - add book form styling could be improved
 */
 
+class Book {
+  constructor(name, author, readOrNot, synopsis) {
+    this.name = name;
+    this.author = author;
+    this.readOrNot = readOrNot
+    this.synopsis = synopsis
+  }
+
+  toggleReadOrNot() {
+    this.readOrNot = !this.readOrNot
+  }
+
+}
+
 const myLibrary = [];
 
 addBookToLibrary("Life of Pi", "Yann Martel", true, "A boy is travelling from India to Canada when the ship sinks, leaving him in a small lifeboat with only an orangutan, a hyena, and an adult bengali tiger...")
@@ -24,8 +38,6 @@ addBookButton.addEventListener("click", () => {
   // The css for this id removes display: none, so styling has to be applied after showModal
   addBookDialog.setAttribute("id","add-book-dialog")
 })
-
-
 
 
 let addBookCancel = document.querySelector("#add-book-cancel")
@@ -56,14 +68,6 @@ addBookForm.addEventListener("submit", (event) => {
 })
 
 
-// Book object constructor
-function Book(name, author, readOrNot, synopsis) {
-  this.name = name;
-  this.author = author;
-  this.readOrNot = readOrNot
-  this.synopsis = synopsis
-}
-
 function resetForm() {
   document.querySelector("#form-book-name").value = "";
   document.querySelector("#form-book-author").value = "";
@@ -82,7 +86,8 @@ function removeBook(index) {
 
 
 function toggleReadOrNot(index) {
-  myLibrary[index].readOrNot = !myLibrary[index].readOrNot
+  myLibrary[index].toggleReadOrNot()
+  //myLibrary[index].readOrNot = !myLibrary[index].readOrNot
 }
 
 
